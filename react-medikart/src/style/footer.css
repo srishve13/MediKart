@@ -1,0 +1,45 @@
+/* Ensure the footer has the correct styles */
+.footer {
+    position: relative; /* Make sure it's not fixed or absolute unless required */
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto; /* Push the footer to the bottom */
+  }
+  
+  /* Footer links styles */
+  .footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin: 0 15px;
+  }
+  
+  /* Footer info styles */
+  .footer-info p {
+    color: white;
+    margin: 0;
+  }
+  
+  /* Optional: Add styling for body if needed to space out content */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes full height */
+  }
+  
+  main {
+    flex: 1; /* This ensures that the main content expands to take the remaining space */
+  }
+  

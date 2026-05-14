@@ -1,0 +1,44 @@
+.add-category-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center everything horizontally */
+}
+
+.category-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center; /* Center form elements horizontally */
+}
+
+.category-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.category-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%; /* Ensures input takes full width of the container */
+}
+
+.category-form button {
+    background-color: #1e78f6;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 13px 20px;
+    width: 100%; /* Ensure button is aligned with input */
+}
+
+.category-form button:hover {
+    background-color: #0044a3;
+}
