@@ -36,7 +36,7 @@
 
 ### Authentication
 
-![Register Login](screenshots/register-login.png)
+![Register Login](screenshots/register-login-page.png)
 
 ### Admin Dashboard
 
@@ -59,35 +59,3 @@
 ![Add Category](screenshots/add-category.png)
 
 ![Edit Category](screenshots/edit-category.png)
-
-## Installation
-
-### Clone the repository
-
-```bash id="e8zw9d"
-git clone <your-repository-link>
-cd MediKart
-```
-
-### Frontend Setup
-
-```bash id="r2fhbq"
-cd frontend
-npm install
-npm start
-```
-
-### Backend Setup
-
-```bash id="rmm0p1"
-cd backend
-```
-
-Run the Spring Boot application from your IDE.
-
-## Future Improvements
-
-* Online payment integration
-* Email notifications
-* Improved product recommendations
-* Deployment and cloud hosting
