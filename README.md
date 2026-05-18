@@ -8,7 +8,7 @@
 
 ![Fitness](screenshots/fitness.png)
 
-![Skin Hair](screenshots/skin-hair.png)
+![Skin Hair](screenshots/skin-and-hair.png)
 
 ![Supplements](screenshots/supplements.png)
 
