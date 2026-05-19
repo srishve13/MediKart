@@ -12,8 +12,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3 ease;
+    transition: transform 0.3 ease, box-shadow 0.3 ease;
     width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 500px;
 }
 
 .product-item:hover {
@@ -30,6 +36,13 @@
     color: #333;
     font-size: 1.2em;
     margin: 10px 0px;
+
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .product-item p {
@@ -64,9 +77,10 @@
 }
 
 .product-image {
-    height: 100px;
-    object-fit: cover;
+    height: 220px;
+    object-fit: contain;
     width: 100%;
+    padding: 10px;
 }
 
 .quantity-controls{
