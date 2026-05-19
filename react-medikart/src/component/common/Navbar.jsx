@@ -1,4 +1,4 @@
-import logo from "../../assets/medikartlogo.png"
+import logo from "../../assets/medikartlogo.png";
 import React, { useState, useEffect } from "react";
 import {
   AppBar,
@@ -14,46 +14,52 @@ import {
   ListItemText,
   Box,
 } from "@mui/material";
+
 import {
   Menu as MenuIcon,
   Search as SearchIcon,
   AccountCircle,
   ShoppingCart,
 } from "@mui/icons-material";
+
 import { NavLink, useNavigate } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import ApiService from "../../service/ApiService";
-import Loader from '../Loader';
+import Loader from "../Loader";
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [categoryAnchorEl, setCategoryAnchorEl] = useState(null); // State for category dropdown
-  const [categories, setCategories] = useState([]); // State for fetched categories
-  const [loading, setLoading] = useState(true); // Loader state
+  const [categoryAnchorEl, setCategoryAnchorEl] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchCategories();
-  }, []);
 
-  const theme = useTheme();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const isAdmin = ApiService.isAdmin();
   const isAuthenticated = ApiService.isAuthenticated();
 
-  // Fetch categories when the component mounts
   const fetchCategories = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
+
     try {
       const response = await ApiService.getAllCategory();
       setCategories(response.categoryList || []);
     } catch (err) {
-      setError(err.response?.data?.message || err.message || "Unable to fetch categories");
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          "Unable to fetch categories"
+      );
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
@@ -65,53 +71,94 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    const confirmLogout = window.confirm(
+      "Are you sure you want to logout?"
+    );
+
     if (confirmLogout) {
       ApiService.logout();
+
       setTimeout(() => {
         navigate("/login");
       }, 500);
     }
   };
 
-  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleMenuOpen = (event) =>
+    setAnchorEl(event.currentTarget);
+
   const handleMenuClose = () => setAnchorEl(null);
 
-  const handleCategoryMenuOpen = (event) => setCategoryAnchorEl(event.currentTarget); // Open category dropdown
-  const handleCategoryMenuClose = () => setCategoryAnchorEl(null); // Close category dropdown
+  const handleCategoryMenuOpen = (event) =>
+    setCategoryAnchorEl(event.currentTarget);
 
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+  const handleCategoryMenuClose = () =>
+    setCategoryAnchorEl(null);
+
+  const handleDrawerToggle = () =>
+    setMobileOpen(!mobileOpen);
 
   const drawer = (
     <div>
       <List>
-        <ListItem button component={NavLink} to="/" onClick={handleDrawerToggle}>
+        <ListItem
+          button
+          component={NavLink}
+          to="/"
+          onClick={handleDrawerToggle}
+        >
           <ListItemText primary="Home" />
         </ListItem>
+
         <ListItem button onClick={handleCategoryMenuOpen}>
           <ListItemText primary="Categories" />
         </ListItem>
+
         {isAuthenticated && (
-          <ListItem button component={NavLink} to="/profile" onClick={handleDrawerToggle}>
+          <ListItem
+            button
+            component={NavLink}
+            to="/profile"
+            onClick={handleDrawerToggle}
+          >
             <ListItemText primary="My Account" />
           </ListItem>
         )}
+
         {isAdmin && (
-          <ListItem button component={NavLink} to="/admin" onClick={handleDrawerToggle}>
+          <ListItem
+            button
+            component={NavLink}
+            to="/admin"
+            onClick={handleDrawerToggle}
+          >
             <ListItemText primary="Admin" />
           </ListItem>
         )}
+
         {!isAuthenticated && (
-          <ListItem button component={NavLink} to="/login" onClick={handleDrawerToggle}>
+          <ListItem
+            button
+            component={NavLink}
+            to="/login"
+            onClick={handleDrawerToggle}
+          >
             <ListItemText primary="Login" />
           </ListItem>
         )}
+
         {isAuthenticated && (
           <ListItem button onClick={handleLogout}>
             <ListItemText primary="Logout" />
           </ListItem>
         )}
-        <ListItem button component={NavLink} to="/cart" onClick={handleDrawerToggle}>
+
+        <ListItem
+          button
+          component={NavLink}
+          to="/cart"
+          onClick={handleDrawerToggle}
+        >
           <ListItemText primary="Cart" />
         </ListItem>
       </List>
@@ -120,8 +167,12 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo */}
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <IconButton
           edge="start"
           color="inherit"
@@ -132,40 +183,26 @@ const Navbar = () => {
           <MenuIcon />
         </IconButton>
 
-        {/* <Typography
-          variant="h6"
-          noWrap
+        <Box
           component={NavLink}
           to="/"
           sx={{
+            display: "flex",
+            alignItems: "center",
             textDecoration: "none",
-            color: "inherit",
-            display: { xs: "none", sm: "block" },
+            pl: 4,
           }}
         >
-        </Typography> */
-        <Box
-  component={NavLink}
-  to="/"
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    textDecoration: "none",
-    pl: 4, // padding-left to move it right
-  }}
->
-  <img
-    src={logo}
-    alt="Logo"
-    style={{ height: "100px", maxWidth: "auto" }} // increase height
-  />
-</Box>
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              height: "100px",
+              maxWidth: "auto",
+            }}
+          />
+        </Box>
 
-
-
-        }
-
-        {/* Search Bar */}
         <Box
           sx={{
             flexGrow: 1,
@@ -196,6 +233,7 @@ const Navbar = () => {
               }}
               inputProps={{ "aria-label": "search" }}
             />
+
             <IconButton
               type="submit"
               sx={{ color: "inherit" }}
@@ -206,40 +244,71 @@ const Navbar = () => {
           </form>
         </Box>
 
-        {/* Links and Icons */}
-        <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}>
+        <Box
+          sx={{
+            display: { xs: "none", sm: "flex" },
+            alignItems: "center",
+          }}
+        >
           <Button component={NavLink} to="/" color="inherit">
             Home
           </Button>
-          <Button color="inherit" onClick={handleCategoryMenuOpen}>
+
+          <Button
+            color="inherit"
+            onClick={handleCategoryMenuOpen}
+          >
             Categories
           </Button>
+
           {isAuthenticated && (
-            <Button component={NavLink} to="/profile" color="inherit">
+            <Button
+              component={NavLink}
+              to="/profile"
+              color="inherit"
+            >
               My Account
             </Button>
           )}
+
           {isAdmin && (
-            <Button component={NavLink} to="/admin" color="inherit">
+            <Button
+              component={NavLink}
+              to="/admin"
+              color="inherit"
+            >
               Admin
             </Button>
           )}
+
           {!isAuthenticated && (
-            <Button component={NavLink} to="/login" color="inherit">
+            <Button
+              component={NavLink}
+              to="/login"
+              color="inherit"
+            >
               Login
             </Button>
           )}
+
           {isAuthenticated && (
-            <Button color="inherit" onClick={handleLogout}>
+            <Button
+              color="inherit"
+              onClick={handleLogout}
+            >
               Logout
             </Button>
           )}
-          <IconButton component={NavLink} to="/cart" color="inherit">
+
+          <IconButton
+            component={NavLink}
+            to="/cart"
+            color="inherit"
+          >
             <ShoppingCart />
           </IconButton>
         </Box>
 
-        {/* Mobile Account Icon */}
         <IconButton
           color="inherit"
           sx={{ display: { xs: "block", sm: "none" } }}
@@ -249,15 +318,14 @@ const Navbar = () => {
         </IconButton>
       </Toolbar>
 
-      {/* Category Dropdown Menu */}
       <Menu
         anchorEl={categoryAnchorEl}
         open={Boolean(categoryAnchorEl)}
         onClose={handleCategoryMenuClose}
       >
-        {loading ? ( // Check if loading
+        {loading ? (
           <MenuItem disabled>
-            <Loader /> {/* Show loader while categories are being fetched */}
+            <Loader />
           </MenuItem>
         ) : Array.isArray(categories) ? (
           categories.map((category) => (
@@ -271,7 +339,9 @@ const Navbar = () => {
             </MenuItem>
           ))
         ) : (
-          <MenuItem disabled>No categories available</MenuItem> // Fallback if categories is not an array
+          <MenuItem disabled>
+            No categories available
+          </MenuItem>
         )}
       </Menu>
 
@@ -284,21 +354,32 @@ const Navbar = () => {
       >
         {drawer}
       </Drawer>
+
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
         {isAuthenticated && (
-          <MenuItem component={NavLink} to="/profile" onClick={handleMenuClose}>
+          <MenuItem
+            component={NavLink}
+            to="/profile"
+            onClick={handleMenuClose}
+          >
             My Account
           </MenuItem>
         )}
+
         {isAdmin && (
-          <MenuItem component={NavLink} to="/admin" onClick={handleMenuClose}>
+          <MenuItem
+            component={NavLink}
+            to="/admin"
+            onClick={handleMenuClose}
+          >
             Admin
           </MenuItem>
         )}
+
         {isAuthenticated ? (
           <MenuItem
             onClick={() => {
@@ -309,11 +390,20 @@ const Navbar = () => {
             Logout
           </MenuItem>
         ) : (
-          <MenuItem component={NavLink} to="/login" onClick={handleMenuClose}>
+          <MenuItem
+            component={NavLink}
+            to="/login"
+            onClick={handleMenuClose}
+          >
             Login
           </MenuItem>
         )}
-        <MenuItem component={NavLink} to="/cart" onClick={handleMenuClose}>
+
+        <MenuItem
+          component={NavLink}
+          to="/cart"
+          onClick={handleMenuClose}
+        >
           Cart
         </MenuItem>
       </Menu>
