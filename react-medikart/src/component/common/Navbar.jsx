@@ -33,7 +33,7 @@ const Navbar = () => {
   const [categoryAnchorEl, setCategoryAnchorEl] = useState(null);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
 
   const navigate = useNavigate();
 
