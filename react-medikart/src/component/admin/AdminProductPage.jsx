@@ -51,6 +51,8 @@ const AdminProductPage = () => {
 
   useEffect(() => {
     fetchProducts();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   const handleEdit = (id) => {

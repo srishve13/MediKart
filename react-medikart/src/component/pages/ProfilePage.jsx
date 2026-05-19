@@ -7,7 +7,6 @@ import {
   Container,
   Typography,
   Button,
-  Alert,
   Pagination as MuiPagination,
 } from "@mui/material";
 

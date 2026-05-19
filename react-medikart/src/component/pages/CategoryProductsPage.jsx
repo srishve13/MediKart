@@ -11,14 +11,15 @@ const CategoryProductsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);  // Current page for pagination
     const [totalPages, setTotalPages] = useState(0);  // Total number of pages
     const [error, setError] = useState(null);  // State to handle errors
-    const itemsPerPage = 8;  // Number of products per page
 
     useEffect(() => {
         if (categoryId) {
-            fetchProducts();  // Fetch products whenever categoryId or currentPage changes
+            fetchProducts();  
         } else {
-            setError("Category ID is required."); // Handle missing categoryId
+            setError("Category ID is required."); 
         }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryId, currentPage]);
 
     const fetchProducts = async () => {

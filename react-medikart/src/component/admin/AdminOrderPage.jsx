@@ -44,10 +44,11 @@ const AdminOrdersPage = () => {
 
   // Check for small screens (mobile devices)
   const isMobile = useMediaQuery("(max-width:600px)");
-  const isTablet = useMediaQuery("(min-width:600px) and (max-width:960px)");
 
   useEffect(() => {
     fetchOrders();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchStatus, currentPage]);
 
   const fetchOrders = async () => {

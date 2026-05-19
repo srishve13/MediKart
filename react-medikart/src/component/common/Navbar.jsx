@@ -34,14 +34,12 @@ const Navbar = () => {
   const [categories, setCategories] = useState([]); // State for fetched categories
   const [loading, setLoading] = useState(true); // Loader state
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const isAdmin = ApiService.isAdmin();
   const isAuthenticated = ApiService.isAuthenticated();
