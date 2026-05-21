@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class ApiService {
-  static BASE_URL = "http://medikart-backend-im3c.onrender.com";
+  static BASE_URL = "https://medikart-backend-im3c.onrender.com";
 
   static getHeader() {
     const token = localStorage.getItem("token");
