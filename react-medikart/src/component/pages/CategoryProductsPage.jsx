@@ -25,7 +25,7 @@ const CategoryProductsPage = () => {
     const fetchProducts = async () => {
         try {
             console.log("Fetching products for category ID:", categoryId);
-            const response = await axios.get(`http://medikart-backend-im3c.onrender.com/product/get-by-category-id/${categoryId}`);
+            const response = await axios.get(`https://medikart-backend-im3c.onrender.com/product/get-by-category-id/${categoryId}`);
             console.log("API Response:", response); // Log the full response
     
             if (response.data && response.data.productList) {
