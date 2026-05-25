@@ -30,23 +30,49 @@ const ProductList = ({ products }) => {
         const cartItem = cart.find((item) => item.id === product.id);
         return (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <Card
+              sx={{
+                height: 430,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                borderRadius: "12px",
+              }}
+            >
               <Link to={`/product/${product.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <CardMedia
                   component="img"
                   alt={product.name}
-                  height="200"
                   image={product.imageUrl}
                   sx={{
-                    objectFit: "contain",
+                    height: 200,
                     width: "100%",
+                    objectFit: "contain",
+                    padding: "10px",
+                    backgroundColor: "#fff",
                   }}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h6" component="div" sx={{ fontSize: { xs: "16px", sm: "18px", md: "20px" } }}>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      fontSize: { xs: "16px", sm: "18px" },
+                      minHeight: "56px",
+                      overflow: "hidden",
+                    }}
+                  >
                     {product.name}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      minHeight: "48px",
+                      overflow: "hidden",
+                    }}
+                  >
                     {product.description}
                   </Typography>
                   <Typography variant="h6" color="green">
