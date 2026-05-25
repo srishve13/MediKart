@@ -141,7 +141,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Response searchProduct(String searchValue) {
         List<Product> products =
-            productRepo.findByNameContainingOrDescriptionContaining(
+            productRepo.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(
                 searchValue,
                 searchValue
                 );
