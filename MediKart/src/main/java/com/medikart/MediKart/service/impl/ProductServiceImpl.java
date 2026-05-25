@@ -1,5 +1,15 @@
 package com.medikart.MediKart.service.impl;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.medikart.MediKart.dto.ProductDto;
@@ -11,17 +21,9 @@ import com.medikart.MediKart.mapper.EntityDtoMapper;
 import com.medikart.MediKart.repository.CategoryRepo;
 import com.medikart.MediKart.repository.ProductRepo;
 import com.medikart.MediKart.service.interf.ProductService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.data.domain.Sort;
-
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -36,7 +38,6 @@ public class ProductServiceImpl implements ProductService {
     public Response createProduct(Long categoryId, MultipartFile image, String name, String description, BigDecimal price) {
         Category category = categoryRepo.findById(categoryId).orElseThrow(() -> new NotFoundException("Category not found"));
 
-        // Upload image to Cloudinary
         String productImageUrl = uploadImageToCloudinary(image);
 
         Product product = new Product();
@@ -127,9 +128,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Response getProductsByCategory(Long categoryId) {
         List<Product> products = productRepo.findByCategoryId(categoryId);
-        if (products.isEmpty()) {
-            throw new NotFoundException("No Products found for this category");
-        }
         List<ProductDto> productDtoList = products.stream()
                 .map(entityDtoMapper::mapProductToDtoBasic)
                 .collect(Collectors.toList());
@@ -142,19 +140,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Response searchProduct(String searchValue) {
-        List<Product> products = productRepo.findByNameContainingOrDescriptionContaining(searchValue, searchValue);
+        List<Product> products =
+            productRepo.findByNameContainingOrDescriptionContaining(
+                searchValue,
+                searchValue
+                );
 
-        if (products.isEmpty()) {
-            throw new NotFoundException("No Products Found");
-        }
         List<ProductDto> productDtoList = products.stream()
-                .map(entityDtoMapper::mapProductToDtoBasic)
-                .collect(Collectors.toList());
+            .map(entityDtoMapper::mapProductToDtoBasic)
+            .collect(Collectors.toList());
 
         return Response.builder()
-                .status(200)
-                .productList(productDtoList)
-                .build();
+            .status(200)
+            .productList(productDtoList)
+            .build();
     }
 
 }
