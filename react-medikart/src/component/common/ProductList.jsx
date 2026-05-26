@@ -36,7 +36,15 @@ const ProductList = ({ products }) => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                borderRadius: "12px",
+                borderRadius: "18px",
+                overflow: "hidden",
+                boxshadow: "0 4px 12px rgba(0,0,0,0.08)",
+                transition: "all 0.3s ease",
+                backgroundColor: "#fff",
+                "&:hover": {
+                  transform: "translateY(-6px)",
+                  boxShadow: "0 10px 24px rgba(0,0,0,0.15)",
+                },
               }}
             >
               <Link to={`/product/${product.id}`} style={{ textDecoration: "none", color: "inherit" }}>
