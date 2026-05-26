@@ -32,7 +32,7 @@ const ProductList = ({ products }) => {
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <Card
               sx={{
-                height: 430,
+                height: 360,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -45,7 +45,7 @@ const ProductList = ({ products }) => {
                   alt={product.name}
                   image={product.imageUrl}
                   sx={{
-                    height: 200,
+                    height: 180,
                     width: "100%",
                     objectFit: "contain",
                     padding: "10px",
