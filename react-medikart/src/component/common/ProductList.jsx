@@ -29,9 +29,19 @@ const ProductList = ({ products }) => {
       {products.map((product, index) => {
         const cartItem = cart.find((item) => item.id === product.id);
         return (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+          <Grid
+            item xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            key={index}
+            sx={{
+              display: "flex",
+            }}
+          >
             <Card
               sx={{
+                width: "100%",
                 minHeight: 420,
                 display: "flex",
                 flexDirection: "column",
