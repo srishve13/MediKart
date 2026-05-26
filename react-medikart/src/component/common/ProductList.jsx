@@ -80,29 +80,23 @@ const ProductList = ({ products }) => {
                       fontSize: "17px",
                       fontWeight: 600,
                       color: "#222",
-                      lineHeight: 1.3,
-                      height: "44px",
+                      whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      wordBreak: "break-word",
+                      width: "100%",
                     }}
                   >
                     {product.name}
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="text.secondary"
                     sx={{
                       fontSize: "14px",
                       color: "#666",
-                      lineHeight: 1.3,
-                      height: "36px",
+                      whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
+                      width: "100%",
                     }}
                   >
                     {product.description}
