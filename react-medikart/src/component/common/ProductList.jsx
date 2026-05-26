@@ -32,13 +32,13 @@ const ProductList = ({ products }) => {
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <Card
               sx={{
-                height: 370,
+                minHeight: 420,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
                 borderRadius: "18px",
                 overflow: "hidden",
-                boxshadow: "0 4px 12px rgba(0,0,0,0.08)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                 transition: "all 0.3s ease",
                 backgroundColor: "#fff",
                 "&:hover": {
@@ -72,6 +72,9 @@ const ProductList = ({ products }) => {
                       minHeight: "48px",
                       overflow: "hidden",
                       color: "#222",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
                     }}
                   >
                     {product.name}
@@ -102,9 +105,25 @@ const ProductList = ({ products }) => {
                   </Typography>
                 </CardContent>
               </Link>
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '8px' }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding:"16px",
+                  marginTop:"auto",
+                }}
+              >
                 {cartItem ? (
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                    display: 'flex',
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "16px",
+                    marginTop: "auto",
+                    }}
+                  >
                     <IconButton onClick={() => decrementItem(product)} size="small">
                       <Remove />
                     </IconButton>
