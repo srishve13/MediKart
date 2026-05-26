@@ -79,12 +79,15 @@ const ProductList = ({ products }) => {
                     sx={{
                       fontSize: "17px",
                       fontWeight: 600,
-                      minHeight: "48px",
-                      overflow: "hidden",
                       color: "#222",
+                      lineHeight: 1.3,
+                      height: "44px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                       display: "-webkit-box",
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: "vertical",
+                      wordBreak: "break-word",
                     }}
                   >
                     {product.name}
@@ -94,11 +97,15 @@ const ProductList = ({ products }) => {
                     color="text.secondary"
                     sx={{
                       fontSize: "14px",
-                      minHeight: "42px",
+                      color: "#666",
+                      lineHeight: 1.4,
+                      height: "40px",
                       overflow: "hidden",
+                      textOverflow: "ellipsis",
                       display: "-webkit-box",
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: "vertical",
+                      wordBreak: "break-word",
                     }}
                   >
                     {product.description}
