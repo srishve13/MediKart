@@ -98,14 +98,11 @@ const ProductList = ({ products }) => {
                     sx={{
                       fontSize: "14px",
                       color: "#666",
-                      lineHeight: 1.4,
-                      height: "40px",
+                      lineHeight: 1.3,
+                      height: "36px",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      wordBreak: "break-word",
+                      whiteSpace: "nowrap",
                     }}
                   >
                     {product.description}
