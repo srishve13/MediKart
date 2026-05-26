@@ -32,7 +32,7 @@ const ProductList = ({ products }) => {
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <Card
               sx={{
-                height: 360,
+                height: 370,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -43,7 +43,7 @@ const ProductList = ({ products }) => {
                 backgroundColor: "#fff",
                 "&:hover": {
                   transform: "translateY(-6px)",
-                  boxShadow: "0 10px 24px rgba(0,0,0,0.15)",
+                  boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
                 },
               }}
             >
@@ -56,8 +56,9 @@ const ProductList = ({ products }) => {
                     height: 180,
                     width: "100%",
                     objectFit: "contain",
-                    padding: "10px",
-                    backgroundColor: "#fff",
+                    padding: "16px",
+                    backgroundColor: "#f8f9fb",
+                    borderBottom: "1px solid #f0f0f0",
                   }}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -66,9 +67,11 @@ const ProductList = ({ products }) => {
                     variant="h6"
                     component="div"
                     sx={{
-                      fontSize: { xs: "16px", sm: "18px" },
-                      minHeight: "56px",
+                      fontSize: "17px",
+                      fontWeight: 600,
+                      minHeight: "48px",
                       overflow: "hidden",
+                      color: "#222",
                     }}
                   >
                     {product.name}
@@ -77,13 +80,24 @@ const ProductList = ({ products }) => {
                     variant="body2"
                     color="text.secondary"
                     sx={{
-                      minHeight: "48px",
+                      fontSize: "14px",
+                      minHeight: "42px",
                       overflow: "hidden",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
                     }}
                   >
                     {product.description}
                   </Typography>
-                  <Typography variant="h6" color="green">
+                  <Typography 
+                    variant="h6"
+                    sx={{
+                      color: "#1976d2",
+                      fontWeight: 700,
+                      marginTop: "10px",
+                    }}
+                  >
                     ₹ {product.price.toFixed(2)}
                   </Typography>
                 </CardContent>
@@ -107,8 +121,12 @@ const ProductList = ({ products }) => {
                     color="primary"
                     onClick={() => addToCart(product)}
                     sx={{
-                      fontSize: { xs: "12px", sm: "14px" },
-                      padding: { xs: "5px 10px", sm: "6px 12px" },
+                      borderRadius: "999px",
+                      textTransform: "none",
+                      fontWeight: 600,
+                      padding: "8px 18px",
+                      boxShadow: "none",
+                      fontSize: "14px",
                     }}
                   >
                     Add To Cart
