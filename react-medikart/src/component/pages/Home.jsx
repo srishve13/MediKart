@@ -49,7 +49,16 @@ const Home = () => {
   }, [location.search, currentPage]);
 
   return (
-    <Container sx={{ flex: 1, paddingTop: 4, paddingBottom: 4 }}>
+    <Container
+      maxWidth={false}
+      sx={{
+        flex: 1,
+        paddingTop: 4,
+        paddingBottom: 4,
+        minHeight: "100vh",
+        background: "linear-gradient(to bottom, #f8fbff, #eef4ff)",
+      }}
+    >
       {loading ? ( // Check if loading
         <Loader /> // Show loader
       ) : error ? (

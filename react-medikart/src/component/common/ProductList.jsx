@@ -41,7 +41,7 @@ const ProductList = ({ products }) => {
           >
             <Card
               sx={{
-                width: "260px",
+                width: "230px",
                 height: "420px",
                 display: "flex",
                 flexDirection: "column",
