@@ -58,8 +58,8 @@ const ProductList = ({ products }) => {
                 border: "1px solid rgba(255,255,255,0.4)",
                 boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
                 "&:hover": {
-                  transform: "translateY(-6px)",
-                  boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
+                  transform: "translateY(-8px) scale(1.02)",
+                  boxShadow: "0 18px 36px rgba(0,0,0,0.16)",
                 },
               }}
             >
@@ -73,13 +73,12 @@ const ProductList = ({ products }) => {
                     width: "100%",
                     objectFit: "contain",
                     padding: "16px",
-                    backgroundColor: "#f8f9fb",
+                    background: "linear-gradient(to bottom, #ffffff, #f5f9ff)",
                     borderBottom: "1px solid #f0f0f0",
                   }}
                 />
                 <CardContent
                   sx={{
-                    flexGrow: 1,
                     padding: "16px",
                     "&:last-child": {
                       paddingBottom: "8px",
@@ -92,7 +91,8 @@ const ProductList = ({ products }) => {
                     component="div"
                     sx={{
                       fontSize: "17px",
-                      fontWeight: 600,
+                      fontWeight: 700,
+                      letterSpacing: "-0.3px",
                       color: "#222",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
@@ -120,7 +120,8 @@ const ProductList = ({ products }) => {
                     sx={{
                       color: "#1976d2",
                       fontWeight: 700,
-                      marginTop: "10px",
+                      marginTop: "6px",
+                      marginBottom: "2px",
                     }}
                   >
                     ₹ {product.price.toFixed(2)}
