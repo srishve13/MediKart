@@ -69,7 +69,7 @@ const ProductList = ({ products }) => {
                   alt={product.name}
                   image={product.imageUrl}
                   sx={{
-                    height: 180,
+                    height: 150,
                     width: "100%",
                     objectFit: "contain",
                     padding: "16px",
@@ -77,7 +77,15 @@ const ProductList = ({ products }) => {
                     borderBottom: "1px solid #f0f0f0",
                   }}
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
+                <CardContent
+                  sx={{
+                    flexGrow: 1,
+                    padding: "16px",
+                    "&:last-child": {
+                      paddingBottom: "8px",
+                    },
+                  }}
+                >
                   <Typography
                     gutterBottom
                     variant="h6"
