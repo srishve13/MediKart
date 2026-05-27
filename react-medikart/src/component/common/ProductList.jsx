@@ -25,7 +25,11 @@ const ProductList = ({ products }) => {
   };
 
   return (
-    <Grid container spacing={3}>
+    <Grid
+      container
+      spacing={3}
+      justifyContent="center"
+    >
       {products.map((product, index) => {
         const cartItem = cart.find((item) => item.id === product.id);
         return (
@@ -48,9 +52,11 @@ const ProductList = ({ products }) => {
                 justifyContent: "space-between",
                 borderRadius: "18px",
                 overflow: "hidden",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                 transition: "all 0.3s ease",
-                backgroundColor: "#fff",
+                backgroundColor: "rgba(255,255,255,0.85)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.4)",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
                 "&:hover": {
                   transform: "translateY(-6px)",
                   boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
@@ -148,12 +154,18 @@ const ProductList = ({ products }) => {
                     color="primary"
                     onClick={() => addToCart(product)}
                     sx={{
-                      borderRadius: "999px",
+                      borderRadius: "14px",
                       textTransform: "none",
                       fontWeight: 600,
-                      padding: "8px 18px",
-                      boxShadow: "none",
-                      fontSize: "14px",
+                      fontSize: "15px",
+                      padding: "10px 22px",
+                      background: "linear-gradient(135deg, #1976d2, #42a5f5)",
+                      boxShadow: "0 6px 16px rgba(25,118,210,0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 10px 20px rgba(25,118,210,0.35)",
+                      },
                     }}
                   >
                     Add To Cart
