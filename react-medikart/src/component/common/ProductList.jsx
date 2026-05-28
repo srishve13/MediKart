@@ -24,6 +24,14 @@ const ProductList = ({ products }) => {
     }
   };
 
+  const getRandomRating = () => {
+    return (4 + Math.random()).toFixed(1);
+  };
+
+  const getRandomReviews = () => {
+    return Math.floor(Math.random() * 400 +50);
+  };
+
   return (
     <Grid
       container
@@ -110,7 +118,7 @@ const ProductList = ({ products }) => {
                     zIndex: 0,
                   }}
                 />
-                
+
                 <Box
                   sx={{
                     position: "absolute",
@@ -183,6 +191,34 @@ const ProductList = ({ products }) => {
                   >
                     ₹ {product.price.toFixed(2)}
                   </Typography>
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      marginTop: "6px",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "13px",
+                        color: "f59e0b",
+                        fontWeight: 600,
+                      }}
+                    >
+                      ★ {getRandomRating()}
+                    </Typography>
+
+                    <Typography
+                      sx={{
+                        fontSize:"13px",
+                        color: "#888",
+                      }}
+                    >
+                      ({getRandomReviews()} reviews)
+                    </Typography>
+                  </Box>
                 </CardContent>
               </Link>
               <Box
