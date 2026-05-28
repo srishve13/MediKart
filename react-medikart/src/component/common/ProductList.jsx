@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { Grid, Card, CardContent, CardMedia, Typography, Button, IconButton, Box } from "@mui/material";
-import { Add, Remove } from "@mui/icons-material";
+import { Add, Remove, FavoriteBorder } from "@mui/icons-material";
 
 const ProductList = ({ products }) => {
   const { cart, dispatch } = useCart();
@@ -51,6 +51,7 @@ const ProductList = ({ products }) => {
                 flexDirection: "column",
                 borderRadius: "18px",
                 overflow: "hidden",
+                position: "relative",
                 transition: "all 0.3s ease",
                 backgroundColor: "rgba(255,255,255,0.85)",
                 backdropFilter: "blur(12px)",
@@ -76,6 +77,30 @@ const ProductList = ({ products }) => {
                     borderBottom: "1px solid #f0f0f0",
                   }}
                 />
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 12,
+                    right: 12,
+                    backgroundColor: "rgba(255,255,255,0.9)",
+                    borderRadius: "50%",
+                    width: 36,
+                    height: 36,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      backgroundColor: "#fff",
+                    },
+                  }}
+                >
+                  <FavoriteBorder sx={{ fontSize: 20, color: "#555"}}/>
+                </Box>
                 <CardContent
                   sx={{
                     padding: "16px",
