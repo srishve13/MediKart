@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { Grid, Card, CardContent, CardMedia, Typography, Button, IconButton, Box } from "@mui/material";
-import { Add, Remove, FavoriteBorder } from "@mui/icons-material";
+import { Add, Remove, FavoriteBorder, LocalShipping, CheckCircle, ShoppingCartOutlined } from "@mui/icons-material";
 
 const ProductList = ({ products }) => {
   const { cart, dispatch } = useCart();
@@ -197,14 +197,17 @@ const ProductList = ({ products }) => {
                       display: "flex",
                       alignItems: "center",
                       gap: "6px",
-                      marginTop: "6px",
+                      marginTop: "8px",
                     }}
                   >
                     <Typography
                       sx={{
                         fontSize: "13px",
-                        color: "f59e0b",
-                        fontWeight: 600,
+                        color: "#16a34a",
+                        fontWeight: 700,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
                       }}
                     >
                       ★ {getRandomRating()}
@@ -216,8 +219,49 @@ const ProductList = ({ products }) => {
                         color: "#888",
                       }}
                     >
-                      ({getRandomReviews()} reviews)
+                      | {getRandomReviews()} reviews
                     </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "10px",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        color: "#16a34a",
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        backgroundColor: "rgba(22,163,74,0.08)",
+                        padding: "4px 8px",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <CheckCircle sx={{ fontSize: 14 }} />
+                      In Stock
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        color: "#2563eb",
+                        fontSize: "12px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      <LocalShipping sx={{ fontSize: 16 }}/>
+                      Fast Delivery
+                    </Box>
                   </Box>
                 </CardContent>
               </Link>
@@ -270,7 +314,10 @@ const ProductList = ({ products }) => {
                       },
                     }}
                   >
-                    Add To Cart
+                    <>
+                      <ShoppingCartOutlined sx={{ fontSize: 18, marginRight: "6px"  }}/>
+                      Add To Cart
+                    </>
                   </Button>
                 )}
               </Box>
