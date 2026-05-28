@@ -73,11 +73,44 @@ const ProductList = ({ products }) => {
                     width: "100%",
                     objectFit: "contain",
                     padding: "16px",
-                    background: "linear-gradient(to bottom, #ffffff, #f5f9ff)",
+                    background: `
+                      radial-gradient(circle at top left, rgba(66,165,245,0.18), transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(25,118,210,0.12), transparent 35%),
+                      linear-gradient(to bottom, #ffffff, #f7fbff)
+                    `,
+                    position: "relative",
                     borderBottom: "1px solid #f0f0f0",
                   }}
                 />
 
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 20,
+                    left: 20,
+                    width: 60,
+                    height: 60,
+                    borderRadius: "50%",
+                    background: "rgba(66,165,245,0.12)",
+                    filter: "blur(18px)",
+                    zIndex: 0,
+                  }}
+                />
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: 30,
+                    right: 30,
+                    width: 50,
+                    height: 50,
+                    borderRadius: "50%",
+                    background: "rgba(25,118,210,0.10)",
+                    filter: "blur(16px)",
+                    zIndex: 0,
+                  }}
+                />
+                
                 <Box
                   sx={{
                     position: "absolute",
