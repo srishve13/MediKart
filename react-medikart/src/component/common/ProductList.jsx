@@ -49,7 +49,6 @@ const ProductList = ({ products }) => {
                 height: "420px",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
                 borderRadius: "18px",
                 overflow: "hidden",
                 transition: "all 0.3s ease",
